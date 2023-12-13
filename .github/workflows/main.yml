@@ -4,9 +4,13 @@ on:
   pull_request:
     branches:
       - '*'
+    paths:
+      - 'appointments/**'
   push:
     branches:
       - main
+    paths:
+      - 'appointments/**'
 
 jobs:
   build:
@@ -22,12 +26,3 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USERNAME }}/appointments:${DOCKER_VERSION} ./appointments
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker push ${{ secrets.DOCKER_USERNAME }}/appointments:${DOCKER_VERSION}
-
-    - name: Path based filtering
-      run: |
-        if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q 'appointments/'; then
-          echo "Changes in appointments folder. Triggering build..."
-        else
-          echo "No changes in appointments folder. Skipping build."
-          exit 1
-        fi
