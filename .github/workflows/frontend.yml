@@ -23,6 +23,6 @@ jobs:
     - name: Build and push Docker image
       run: |
         DOCKER_VERSION=$(git rev-parse --short HEAD)
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/appointments:${DOCKER_VERSION} ./frontend
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend:${DOCKER_VERSION} ./frontend
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker push ${{ secrets.DOCKER_USERNAME }}/frontend:${DOCKER_VERSION}
