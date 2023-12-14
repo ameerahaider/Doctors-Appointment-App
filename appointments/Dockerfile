@@ -16,5 +16,5 @@ COPY . .
 # Expose the port that the application will listen on
 EXPOSE 7070
 
-# Start the app
+# Start the application
 CMD [ "python", "app.py" ]
