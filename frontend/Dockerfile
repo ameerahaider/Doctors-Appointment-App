@@ -16,5 +16,5 @@ COPY . .
 # Expose the port that the application will listen on
 EXPOSE 3000
 
-# Start the application
+# Start application
 CMD [ "node", "app.js" ]

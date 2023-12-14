@@ -16,5 +16,5 @@ COPY . .
 # Expose the port that the application will listen on
 EXPOSE 9090
 
-# Start the app
+# Start app
 CMD [ "python", "app.py" ]
