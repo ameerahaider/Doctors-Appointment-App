@@ -12,6 +12,8 @@ services:
       replicas: 2
     networks:
       - mynet
+    env_file:
+      - .env
 
   appointments:
     image: ${DOCKER_USERNAME}/appointments:${APPOINTMENT_VERSION}
@@ -23,6 +25,8 @@ services:
       replicas: 2
     networks:
       - mynet
+    env_file:
+      - .env
 
   frontend:
     image: ${DOCKER_USERNAME}/frontend:${FRONTEND_VERSION} 
@@ -42,6 +46,8 @@ services:
     depends_on:
       - doctors
       - appointments
+    env_file:
+      - .env
   
   db:
     image: mysql:latest
