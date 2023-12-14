@@ -31,4 +31,3 @@ jobs:
 
     - name: Update .env file with FRONTEND_VERSION
       run: echo "FRONTEND_VERSION=${FRONTEND_VERSION}" >> .env
-      working-directory: ./frontend
