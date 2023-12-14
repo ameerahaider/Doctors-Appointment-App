@@ -28,3 +28,7 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend:${DOCKER_VERSION} ./frontend
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker push ${{ secrets.DOCKER_USERNAME }}/frontend:${DOCKER_VERSION}
+
+    - name: Update .env file with FRONTEND_VERSION
+      run: echo "FRONTEND_VERSION=${FRONTEND_VERSION}" >> .env
+      working-directory: ./frontend
